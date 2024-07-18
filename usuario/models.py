@@ -21,14 +21,12 @@ class Usuario(models.Model):
         return texto.format(self.Correo, self.Nombre_User, self.ID_Usuario, self.Fechar_registro)
 
 class Precio(models.Model):
-    ID_Precio = models.PositiveIntegerField(primary_key=True, unique=True, verbose_name='ID')
-    Precio_Prod = models.PositiveIntegerField()
-    Fecha_registro = models.DateTimeField(auto_now_add=True)
+    ID_Precio = models.AutoField(primary_key=True)
+    Precio_Prod = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        texto = "{0} ({1})"
-        return texto.format(self.ID_Precio, self.Fecha_registro)
-
+        return f"{self.ID_Precio}: {self.Precio_Prod}"
+    
 class Categoría(models.Model):
     ID_Categoría = models.PositiveIntegerField(primary_key=True, unique=True, verbose_name='ID')
     Nombre_Catego = models.CharField(max_length=50)
