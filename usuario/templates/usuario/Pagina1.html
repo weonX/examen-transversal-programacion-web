@@ -50,7 +50,6 @@
 </head>
 
 <body>
-  
   <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -90,16 +89,14 @@
 
 
   <script>
-    // Agrega una clase de parpadeo al navbar-brand
     $(document).ready(function() {
       setInterval(function() {
         $('.blink').toggleClass('blinking');
-      }, 1000); // Cambia el intervalo de tiempo si deseas un parpadeo más rápido o lento
+      }, 1000);
     });
-    </script>
+  </script>
 
   <!-- Formularios de Registro y Login -->
-  
   <div class="container">
     <div id="formulario-registro" style="display: none;">
       <h2>Registrarse</h2>
@@ -120,9 +117,7 @@
         <button type="button" class="btn btn-secondary" onclick="cerrarFormularioRegistro()">Cerrar</button>
       </form>
     </div>
-  
-
-
+    
     <div id="formulario-login" style="display: none;">
       <h2>Iniciar Sesión</h2>
       <form action="/registrar/" method="POST">
@@ -140,7 +135,6 @@
     </div>
   </div>
 
-
   <!-- Carrusel -->
   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -152,7 +146,7 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <a href="{% url 'Pagina2' %}">
-          <img src="{% static 'usuario/img/cebollas 4.jpg' %}" class="d-block w-100" alt="Oferta1" height="400" style="border: 10px solid black;">
+          <img src="{% static 'usuario/img/cebollas 4.jpg' %}" class="d-block w-100" alt="Oferta1" height="400">
         </a>
         <div class="carousel-caption d-none d-md-block">
           <h5>Las mejores Cebollas a mejor precios</h5>
@@ -161,7 +155,7 @@
       </div>
       <div class="carousel-item">
         <a href="{% url 'Pagina3' %}">
-          <img src="{% static 'usuario/img/platano 5.jpg' %}" class="d-block w-100" alt="Oferta2" height="400" style="border: 10px solid black;">
+          <img src="{% static 'usuario/img/platano 5.jpg' %}" class="d-block w-100" alt="Oferta2" height="400">
         </a>
         <div class="carousel-caption d-none d-md-block">
           <h5>Las mejores Platanos a mejor precios</h5>
@@ -170,7 +164,7 @@
       </div>
       <div class="carousel-item">
         <a href="{% url 'Pagina4' %}">
-          <img src="{% static 'usuario/img/Carne vacuno 3.jpg' %}" class="d-block w-100" alt="Oferta3" height="400" style="border: 10px solid black;">
+          <img src="{% static 'usuario/img/Carne vacuno 3.jpg' %}" class="d-block w-100" alt="Oferta3" height="400">
         </a>
         <div class="carousel-caption d-none d-md-block">
           <h5>Las mejores Carnes a mejores precios</h5>
@@ -179,7 +173,7 @@
       </div>
       <div class="carousel-item">
         <a href="{% url 'Pagina5' %}">
-          <img src="{% static 'usuario/img/Lacteos.jpg' %}" class="d-block w-100" alt="Oferta4" height="400" style="border: 10px solid black;">
+          <img src="{% static 'usuario/img/Lacteos.jpg' %}" class="d-block w-100" alt="Oferta4" height="400">
         </a>
         <div class="carousel-caption d-none d-md-block">
           <h5>Las mejores Leches a mejor precios</h5>
@@ -197,147 +191,145 @@
     </button>
   </div>
 
-
   <script>
-  // Activar el deslizamiento automático cada 3 segundos
-  document.addEventListener('DOMContentLoaded', function () {
-    var myCarousel = document.querySelector('#carouselExampleCaptions');
-    var carousel = new bootstrap.Carousel(myCarousel, {
-      interval: 3000, // Intervalo de cambio en milisegundos (3segundos)
+    document.addEventListener('DOMContentLoaded', function() {
+      var myCarousel = document.querySelector('#carouselExampleCaptions');
+      var carousel = new bootstrap.Carousel(myCarousel, {
+        interval: 3000,
+      });
     });
-    });
-    </script>
+  </script>
 
   <!-- Tarjetas de Productos -->
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-      <div class="card border-primary">
-        <img src="{% static 'usuario/img/verduras.jpg' %}" class="card-img-top" alt="Verduras" width="150" height="150">
-        <div class="card-body">
-          <h5 class="card-title text-primary">Verduras</h5>
-          <p class="card-text">Deléitate con la frescura y calidad excepcional de nuestras verduras frescas en oferta. Llena tu mesa de sabor y salud con los mejores productos de la naturaleza a precios irresistibles.</p>
-          <a href="{% url 'Pagina2' %}" type="button" class="btn btn-primary">Ir a ver</a>
+  <div class="container my-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card">
+          <img src="{% static 'usuario/img/verduras.jpg' %}" class="card-img-top" alt="Verduras" width="150" height="150">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Verduras</h5>
+            <p class="card-text">Deléitate con la frescura y calidad excepcional de nuestras verduras frescas en oferta. Llena tu mesa de sabor y salud con los mejores productos de la naturaleza a precios irresistibles.</p>
+            <a href="{% url 'Pagina2' %}" type="button" class="btn btn-primary">Ir a ver</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <div class="card border-success">
-        <img src="{% static 'usuario/img/Frutas.jpg' %}" class="card-img-top" alt="Frutas" width="150" height="150">
-        <div class="card-body">
-          <h5 class="card-title text-success">Frutas</h5>
-          <p class="card-text">Descubre un mundo de sabores y colores en nuestra sección de frutas. Desde las clásicas hasta las exóticas, encuentra ofertas increíbles en frutas frescas y deliciosas para disfrutar en cada bocado.</p>
-          <a href="{% url 'Pagina3' %}" type="button" class="btn btn-success">Ir a ver</a>
+      <div class="col">
+        <div class="card">
+          <img src="{% static 'usuario/img/Frutas.jpg' %}" class="card-img-top" alt="Frutas" width="150" height="150">
+          <div class="card-body">
+            <h5 class="card-title text-success">Frutas</h5>
+            <p class="card-text">Descubre un mundo de sabores y colores en nuestra sección de frutas. Desde las clásicas hasta las exóticas, encuentra ofertas increíbles en frutas frescas y deliciosas para disfrutar en cada bocado.</p>
+            <a href="{% url 'Pagina3' %}" type="button" class="btn btn-success">Ir a ver</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <div class="card border-danger">
-        <img src="{% static 'usuario/img/carne vacuno los tineos.jpg' %}" class="card-img-top" alt="Carnes" width="150" height="150">
-        <div class="card-body">
-          <h5 class="card-title text-danger">Carnes</h5>
-          <p class="card-text">Disfruta de irresistibles ofertas en carnes frescas y preparadas para satisfacer tus antojos. Encuentra todo lo que necesitas para crear platos deliciosos y elevar tus comidas a otro nivel.</p>
-          <a href="{% url 'Pagina4' %}" type="button" class="btn btn-danger">Ir a ver</a>
+      <div class="col">
+        <div class="card">
+          <img src="{% static 'usuario/img/carne vacuno los tineos.jpg' %}" class="card-img-top" alt="Carnes" width="150" height="150">
+          <div class="card-body">
+            <h5 class="card-title text-danger">Carnes</h5>
+            <p class="card-text">Disfruta de irresistibles ofertas en carnes frescas y preparadas para satisfacer tus antojos. Encuentra todo lo que necesitas para crear platos deliciosos y elevar tus comidas a otro nivel.</p>
+            <a href="{% url 'Pagina4' %}" type="button" class="btn btn-danger">Ir a ver</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <div class="card border-warning">
-        <img src="{% static 'usuario/img/Lacteos.jpg' %}" class="card-img-top" alt="Lacteos" width="150" height="150">
-        <div class="card-body">
-          <h5 class="card-title text-warning">Lácteos</h5>
-          <p class="card-text">Saborea la frescura de nuestros lácteos, desde leche cremosa hasta quesos artesanales. Descubre una amplia variedad de productos lácteos a precios increíbles para nutrir a tu familia con deliciosos y saludables platillos.</p>
-          <a href="{% url 'Pagina5' %}" type="button" class="btn btn-warning">Ir a ver</a>
+      <div class="col">
+        <div class="card">
+          <img src="{% static 'usuario/img/Lacteos.jpg' %}" class="card-img-top" alt="Lacteos" width="150" height="150">
+          <div class="card-body">
+            <h5 class="card-title text-warning">Lácteos</h5>
+            <p class="card-text">Saborea la frescura de nuestros lácteos, desde leche cremosa hasta quesos artesanales. Descubre una amplia variedad de productos lácteos a precios increíbles para nutrir a tu familia con deliciosos y saludables platillos.</p>
+            <a href="{% url 'Pagina5' %}" type="button" class="btn btn-warning">Ir a ver</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <p id="bajonea">Tu bienestar es nuestra prioridad, por eso te ofrecemos información sobre las farmacias de turno en todo Chile.</p>
 
-  
-
-  <p id="bajonea"> Tu bienestar es nuestra prioridad, por eso te ofrecemos información sobre las farmacias de turno en todo Chile.
-
-    <script>
-      $(document).ready(function() {
-        // Función para animar el párrafo al hacer clic en él
-        $('#bajonea').click(function() {
-          $(this).animate({ fontSize: '24px', opacity: '0.5' }, 'slow');
-        });
+  <script>
+    $(document).ready(function() {
+      $('#bajonea').click(function() {
+        $(this).animate({
+          fontSize: '24px',
+          opacity: '0.5'
+        }, 'slow');
       });
-    </script>
-  
+    });
+  </script>
 
   <!-- Sección de Farmacias -->
   <div class="farmacias-carousel" id="farmaciasCarousel"></div>
   <script src="{% static 'usuario/js/obtenerFarmacias.js' %}"></script>
 
   <!-- Scripts para Formularios -->
-<script>
-  function mostrarFormularioRegistro() {
-    document.getElementById("formulario-registro").style.display = "flex"; /* Cambiar a flex para centrar verticalmente */
-    document.getElementById("formulario-login").style.display = "none";
-  }
+  <script>
+    function mostrarFormularioRegistro() {
+      document.getElementById("formulario-registro").style.display = "flex";
+      document.getElementById("formulario-login").style.display = "none";
+    }
 
-  function cerrarFormularioRegistro() {
-    document.getElementById("formulario-registro").style.display = "none";
-  }
+    function cerrarFormularioRegistro() {
+      document.getElementById("formulario-registro").style.display = "none";
+    }
 
-  function mostrarFormularioLogin() {
-    document.getElementById("formulario-login").style.display = "flex"; /* Cambiar a flex para centrar verticalmente */
-    document.getElementById("formulario-registro").style.display = "none";
-  }
+    function mostrarFormularioLogin() {
+      document.getElementById("formulario-login").style.display = "flex";
+      document.getElementById("formulario-registro").style.display = "none";
+    }
 
-  function cerrarFormularioLogin() {
-    document.getElementById("formulario-login").style.display = "none";
-  }
-</script>
+    function cerrarFormularioLogin() {
+      document.getElementById("formulario-login").style.display = "none";
+    }
+  </script>
 
-<div id="openModal" class="modalDialog">
-  <div>
-    <a href="#close" title="Close" class="close">X</a>
-    <h2>Nos ubicamos</h2>
-    <p>Calle siempre viva.</p>
-    <p>oficina 777 providencia, santiago Chile.</p>
+  <div id="openModal" class="modalDialog">
+    <div>
+      <a href="#close" title="Close" class="close">X</a>
+      <h2>Nos ubicamos</h2>
+      <p>Calle siempre viva.</p>
+      <p>oficina 777 providencia, santiago Chile.</p>
+    </div>
   </div>
-</div>
 
-<div class="a1">
-  <a href="#openModal" type="button" class="btn btn-primary">contacto</a>
-  <a class="btn btn-primary" href="{% url 'producto1' %}">Admin</a>
-</div>
+  <div class="a1">
+    <a href="#openModal" type="button" class="btn btn-primary">contacto</a>
+    <a class="btn btn-primary" href="{% url 'producto1' %}">Admin</a>
+  </div>
 
+  <!-- Elemento para mostrar la fecha y hora -->
+  <div id="currentDateTime"></div>
 
-<!-- Elemento para mostrar la fecha y hora -->
-<div id="currentDateTime"></div>
+  <!-- Script para actualizar la fecha y hora -->
+  <script>
+    function getCurrentDateTime() {
+      const now = new Date();
+      const options = {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: false
+      };
+      return now.toLocaleString('es-ES', options);
+    }
 
-<!-- Script para actualizar la fecha y hora -->
-<script>
-  function getCurrentDateTime() {
-    const now = new Date();
-    const options = {
-      year: 'numeric', month: 'numeric', day: 'numeric',
-      hour: 'numeric', minute: 'numeric', second: 'numeric',
-      hour12: false // Formato de 24 horas
-    };
-    return now.toLocaleString('es-ES', options);
-  }
+    function updateDateTime() {
+      const currentDateTime = getCurrentDateTime();
+      document.getElementById('currentDateTime').innerText = 'Fecha y hora actual: ' + currentDateTime;
+    }
 
-  function updateDateTime() {
-    const currentDateTime = getCurrentDateTime();
-    document.getElementById('currentDateTime').innerText = 'Fecha y hora actual: ' + currentDateTime;
-  }
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+  </script>
 
-  // Actualizar la fecha y hora cada segundo
-  setInterval(updateDateTime, 1000);
-
-  // Actualizar la fecha y hora al cargar la página
-  updateDateTime();
-</script>
-
-<footer class="footer">
-  <hr>
-  <p class="text-center">&copy; 2024 Todos los derechos reservados.</p>
-</footer>
+  <footer class="footer">
+    <hr>
+    <p class="text-center">&copy; 2024 Todos los derechos reservados.</p>
+  </footer>
 
 </body>
 </html>
