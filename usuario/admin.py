@@ -21,13 +21,13 @@ class UsuarioAdmin(admin.ModelAdmin):
     exclude = ('Correo', 'Fechar_registro',)
 
 @admin.register(Precio)
-class PreciooAdmin(admin.ModelAdmin):
-    list_display=('ID_Precio', 'Fecha_registro')
+class PrecioAdmin(admin.ModelAdmin):
+    list_display = ('ID_Precio', 'Precio_Prod')  # Eliminar 'Fecha_registro'
     ordering = ('ID_Precio',)
-    search_fields = ('Fecha_registro',)
+    search_fields = ('ID_Precio',)  # Eliminar 'Fecha_registro'
     list_display_links = ('ID_Precio',)
     list_per_page = 10
-    exclude = ('Fecha_registro',)
+    # Eliminar la línea de 'exclude'
 
 @admin.register(Categoría)
 class CategoríaAdmin(admin.ModelAdmin):

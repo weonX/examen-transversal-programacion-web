@@ -10,11 +10,11 @@
             <div class="card-body">
                 <form action="{% url 'precio_create' %}" method="POST">{% csrf_token %}
                     <div class="form-group">
-                        <input type="text" id="Nombre_Precio" name="Nombre_Precio" class="form-control" placeholder="Nombre de Precio" minlength="1" maxlength="50" required>
+                        <input type="text" id="ID_Precio" name="ID_Precio" class="form-control" placeholder="ID de Precio" required>
                     </div>
                     <br>
                     <div class="form-group">
-                        <input type="number" id="Precio" name="Precio" class="form-control" placeholder="Precio" required>
+                        <input type="number" id="Precio_Prod" name="Precio_Prod" class="form-control" placeholder="Precio del Producto" required>
                     </div>
                     <br>
                     <div class="form-group">
@@ -32,7 +32,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Nombre</th>
+                        <th>ID</th>
                         <th>Precio</th>
                         <th colspan="2">Opciones</th>
                     </tr>
@@ -41,8 +41,8 @@
                     {% for p in precios %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td>{{ p.Nombre_Precio }}</td>
-                        <td>{{ p.Precio }}</td>
+                        <td>{{ p.ID_Precio }}</td>
+                        <td>{{ p.Precio_Prod }}</td>
                         <td><a href="{% url 'precio_update' p.pk %}" class="btn btn-info">Editar</a></td>
                         <td><a href="{% url 'precio_delete' p.pk %}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
                     </tr>
