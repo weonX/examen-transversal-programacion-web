@@ -6,6 +6,11 @@ from .forms import UsuarioForm, PrecioForm, CategoríaForm, SupermercadoForm
 from .models import Usuario, Precio, Categoría, Supermercado, Producto
 
 
+def carrito(request):
+    # Aquí podrías recuperar los productos del carrito desde la base de datos o la sesión
+    carrito_items = []  # Esta es una lista de ejemplo, deberías obtenerla de la sesión o base de datos
+    return render(request, 'usuario/carrito.html', {'carrito_items': carrito_items})
+
 def Pagina1(request):
     usuario = Usuario.objects.all()
     data = {'usuarios': usuario}

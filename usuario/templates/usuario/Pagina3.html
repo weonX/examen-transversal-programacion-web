@@ -8,12 +8,35 @@
   <link rel="stylesheet" href="{% static 'usuario/css/pagina1.css' %}">
   <title>Pagina3</title>
 </head>
-
+<style>
+  .carousel-item img {
+    border-radius: 15px;
+    object-fit: cover;
+    height: 400px;
+  }
+  .carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  .carousel-caption h5 {
+    font-size: 2rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+  .carousel-caption p {
+    font-size: 1.25rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+  .carousel-indicators button {
+    background-color: #ffffff;
+  }
+</style>
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <!-- Agrega una clase "blink" al navbar-brand -->
       <a class="navbar-brand blink" href="{% url 'Pagina1' %}">BAJONEA</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,6 +63,9 @@
         <div class="d-flex">
           <button class="btn btn-outline-primary me-2" onclick="mostrarFormularioRegistro()">Registrarse</button>
           <button class="btn btn-outline-primary" onclick="mostrarFormularioLogin()">Login</button>
+          <a href="{% url 'carrito' %}" class="btn btn-outline-primary">
+            <i class="fas fa-shopping-cart"></i> Carrito <span class="badge bg-primary" id="cart-count">0</span>
+          </a>
         </div>
       </div>
     </div>
@@ -179,30 +205,35 @@
       <img src="{% static 'usuario/img/granadas 3.jpg' %}" alt="granadas">
       <p class="descripcion">lider: $1000 el kilo <br> santa isabel: $1900 kilo <br> el trebol: $990 el kilo <br>
         tottus: $1910 el kilo</p>
+        <a href="#" class="btn btn-primary btn-agregar-carrito" data-producto-id="{{ producto.id }}">Agregar al Carrito</a>
     </li>
     <br>
     <li>
       <img src="{% static 'usuario/img/moras 2.jpg' %}" alt="moras">
       <p class="descripcion">lider: $1000 el kilo <br> santa isabel: $1900 kilo <br> el trebol: $990 el kilo <br>
         tottus: $1910 el kilo</p>
+        <a href="#" class="btn btn-primary btn-agregar-carrito" data-producto-id="{{ producto.id }}">Agregar al Carrito</a>
     </li>
     <br>
     <li>
       <img src="{% static 'usuario/img/pera 1.jpg' %}" alt="pera">
       <p class="descripcion">lider: $1000 el kilo <br> santa isabel: $1900 kilo <br> el trebol: $990 el kilo <br>
         tottus: $1910 el kilo</p>
+        <a href="#" class="btn btn-primary btn-agregar-carrito" data-producto-id="{{ producto.id }}">Agregar al Carrito</a>
     </li>
     <br>
     <li>
       <img src="{% static 'usuario/img/platano 5.jpg' %}" alt="platano">
       <p class="descripcion">lider: $1000 el kilo <br> santa isabel: $1900 kilo <br> el trebol: $990 el kilo <br>
         tottus: $1910 el kilo</p>
+        <a href="#" class="btn btn-primary btn-agregar-carrito" data-producto-id="{{ producto.id }}">Agregar al Carrito</a>
     </li>
     <br>
     <li>
       <img src="{% static 'usuario/img/naranja 4.jpg' %}" alt="naranja">
       <p class="descripcion" alt>lider: $1000 el kilo <br> santa isabel: $1900 kilo <br> el trebol: $990 el kilo <br>
         tottus: $1910 el kilo
+        <a href="#" class="btn btn-primary btn-agregar-carrito" data-producto-id="{{ producto.id }}">Agregar al Carrito</a>
       </p>
     </li>
   </ul>
@@ -332,6 +363,7 @@ function validarLogin() {
 </div>
 <div class="a1">
   <a href="#openModal" type="button" class="btn btn-primary">contacto</a>
+  <a class="btn btn-primary" href="{% url 'producto1' %}">Admin</a>
 </div>
 
 

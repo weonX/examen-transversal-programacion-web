@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  {% load static %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'usuario/css/pagina1.css' %}">
+  <title>Carrito de Compras</title>
+  <style>
+    .card {
+      border: none;
+      border-radius: 15px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    .card img {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+    .btn-primary {
+      border-radius: 50px;
+    }
+    .carousel-item img {
+      border-radius: 15px;
+    }
+    .carousel-caption {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .carousel-caption h5 {
+      font-size: 2rem;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+    .carousel-caption p {
+      font-size: 1.25rem;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+    .carousel-indicators button {
+      background-color: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand blink" href="{% url 'Pagina1' %}">BAJONEA</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'Pagina1' %}">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'Pagina2' %}">Verduras</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'Pagina3' %}">Frutas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'Pagina4' %}">Carnes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'Pagina5' %}">Lácteos</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <button class="btn btn-outline-primary me-2" onclick="mostrarFormularioRegistro()">Registrarse</button>
+        <button class="btn btn-outline-primary" onclick="mostrarFormularioLogin()">Login</button>
+        <a href="{% url 'carrito' %}" class="btn btn-outline-primary">
+          <i class="fas fa-shopping-cart"></i> Carrito <span class="badge bg-primary" id="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div id="formulario-registro" style="display: none;">
+    <h2>Registrarse</h2>
+    <form action="/registrar/" method="POST">{% csrf_token %}
+      <div class="mb-3">
+        <input type="text" name="nombre" class="form-control" min="2" max="25" placeholder="Nombre">
+      </div>
+      <div class="mb-3">
+        <input type="email" name="email" class="form-control" min="5" max="50" placeholder="Email">
+      </div>
+      <div class="mb-3">
+        <input type="password" name="contraseña" class="form-control" min="4" max="25" placeholder="Contraseña">
+      </div>
+      <div class="mb-3">
+        <input type="password" name="confirmar_contraseña" class="form-control" min="4" max="25" placeholder="Confirme Contraseña">
+      </div>
+      <input type="submit" value="Guardar" class="btn btn-primary">
+      <button type="button" class="btn btn-secondary" onclick="cerrarFormularioRegistro()">Cerrar</button>
+    </form>
+  </div>
+
+<div id="formulario-login" style="display: none;">
+  <h2>Iniciar Sesión</h2>
+  <form action="/registrar/" method="POST">
+    <div class="mb-3">
+      <label for="correo" class="form-label">Correo:</label>
+      <input type="email" id="correo" name="correo" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="contraseña_login" class="form-label">Contraseña:</label>
+      <input type="password" id="contraseña_login" name="contraseña_login" class="form-control" required>
+    </div>
+    <input type="submit" value="Iniciar Sesión" class="btn btn-primary">
+    <button type="button" class="btn btn-secondary" onclick="cerrarFormularioLogin()">Cerrar</button>
+  </form>
+</div>
+</div>
+
+  <!-- Contenido del Carrito -->
+  <div class="container mt-5">
+    <h2>Carrito de Compras</h2>
+    <div class="row">
+      <div class="col-md-8">
+        <ul class="list-group">
+          {% for item in carrito_items %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ item.nombre }} - {{ item.cantidad }} x {{ item.precio }} 
+            <span>{{ item.total }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h4>Total: ${{ total_carrito }}</h4>
+        <button class="btn btn-primary btn-block">Proceder al Pago</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Agrega una clase de parpadeo al navbar-brand
+    $(document).ready(function() {
+      setInterval(function() {
+        $('.blink').toggleClass('blinking');
+      }, 1000); // Cambia el intervalo de tiempo si deseas un parpadeo más rápido o lento
+    });
+    </script>
+
+
+  <script>
+    // Activar el deslizamiento automático cada 3 segundos
+    document.addEventListener('DOMContentLoaded', function () {
+      var myCarousel = document.querySelector('#carouselExampleCaptions');
+      var carousel = new bootstrap.Carousel(myCarousel, {
+        interval: 3000, // Intervalo de cambio en milisegundos (3segundos)
+      });
+      });
+      </script>
+
+  <p id="bajonea"> Tu bienestar es nuestra prioridad, por eso te ofrecemos información sobre las farmacias de turno en todo Chile.
+
+    <script>
+      $(document).ready(function() {
+        // Función para animar el párrafo al hacer clic en él
+        $('#bajonea').click(function() {
+          $(this).animate({ fontSize: '24px', opacity: '0.5' }, 'slow');
+        });
+      });
+    </script>
+  
+
+  <!-- Sección de Farmacias -->
+  <div class="farmacias-carousel" id="farmaciasCarousel"></div>
+  <script src="{% static 'usuario/js/obtenerFarmacias.js' %}"></script>
+
+  <!-- Scripts para Formularios -->
+<script>
+  function mostrarFormularioRegistro() {
+    document.getElementById("formulario-registro").style.display = "flex"; /* Cambiar a flex para centrar verticalmente */
+    document.getElementById("formulario-login").style.display = "none";
+  }
+
+  function cerrarFormularioRegistro() {
+    document.getElementById("formulario-registro").style.display = "none";
+  }
+
+  function mostrarFormularioLogin() {
+    document.getElementById("formulario-login").style.display = "flex"; /* Cambiar a flex para centrar verticalmente */
+    document.getElementById("formulario-registro").style.display = "none";
+  }
+
+  function cerrarFormularioLogin() {
+    document.getElementById("formulario-login").style.display = "none";
+  }
+</script>
+
+  <div id="openModal" class="modalDialog">
+    <div>
+      <a href="#close" title="Close" class="close">X</a>
+      <h2>Nos ubicamos</h2>
+      <p>Calle siempre viva.</p>
+      <p>oficina 777 providencia, santiago Chile.</p>
+    </div>
+  </div>
+  <div class="a1">
+    <a href="#openModal" type="button" class="btn btn-primary">contacto</a>
+    <a class="btn btn-primary" href="{% url 'producto1' %}">Admin</a>
+  </div>
+
+  <!-- Elemento para mostrar la fecha y hora -->
+<div id="currentDateTime"></div>
+
+<!-- Script para actualizar la fecha y hora -->
+<script>
+  function getCurrentDateTime() {
+    const now = new Date();
+    const options = {
+      year: 'numeric', month: 'numeric', day: 'numeric',
+      hour: 'numeric', minute: 'numeric', second: 'numeric',
+      hour12: false // Formato de 24 horas
+    };
+    return now.toLocaleString('es-ES', options);
+  }
+
+  function updateDateTime() {
+    const currentDateTime = getCurrentDateTime();
+    document.getElementById('currentDateTime').innerText = 'Fecha y hora actual: ' + currentDateTime;
+  }
+
+  // Actualizar la fecha y hora cada segundo
+  setInterval(updateDateTime, 1000);
+
+  // Actualizar la fecha y hora al cargar la página
+  updateDateTime();
+</script>
+
+  <footer class="footer mt-5">
+    <hr>
+    <p class="text-center">&copy; 2024 Todos los derechos reservados.</p>
+  </footer>
+  <script>
+    function agregarAlCarrito(productoId) {
+      // Simula agregar un producto al carrito
+      let cartCount = parseInt(document.getElementById('cart-count').innerText);
+      cartCount += 1;
+      document.getElementById('cart-count').innerText = cartCount;
+  
+      // Aquí deberías agregar lógica para almacenar el producto en la sesión o base de datos
+    }
+  
+    document.querySelectorAll('.btn-agregar-carrito').forEach(button => {
+      button.addEventListener('click', function() {
+        const productoId = this.dataset.productoId;
+        agregarAlCarrito(productoId);
+      });
+    });
+  </script>
+
+</body>
+
+</html>

@@ -8,44 +8,86 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="{% static 'usuario/css/pagina1.css' %}">
   <title>BAJONEA</title>
+  <style>
+    .card {
+      border: none;
+      border-radius: 15px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    .card img {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+    .btn-primary {
+      border-radius: 50px;
+    }
+    .carousel-item img {
+      border-radius: 15px;
+    }
+    .carousel-caption {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .carousel-caption h5 {
+      font-size: 2rem;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+    .carousel-caption p {
+      font-size: 1.25rem;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+    .carousel-indicators button {
+      background-color: #ffffff;
+    }
+  </style>
 </head>
 
 <body>
   
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <!-- Agrega una clase "blink" al navbar-brand -->
-      <a class="navbar-brand blink" href="{% url 'Pagina1' %}">BAJONEA</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'Pagina1' %}">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'Pagina2' %}">Verduras</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'Pagina3' %}">Frutas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'Pagina4' %}">Carnes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'Pagina5' %}">Lácteos</a>
-          </li>
-        </ul>
-        <div class="d-flex">
-          <button class="btn btn-outline-primary me-2" onclick="mostrarFormularioRegistro()">Registrarse</button>
-          <button class="btn btn-outline-primary" onclick="mostrarFormularioLogin()">Login</button>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand blink" href="{% url 'Pagina1' %}">BAJONEA</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'Pagina1' %}">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'Pagina2' %}">Verduras</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'Pagina3' %}">Frutas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'Pagina4' %}">Carnes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'Pagina5' %}">Lácteos</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <button class="btn btn-outline-primary me-2" onclick="mostrarFormularioRegistro()">Registrarse</button>
+        <button class="btn btn-outline-primary" onclick="mostrarFormularioLogin()">Login</button>
+        <a href="{% url 'carrito' %}" class="btn btn-outline-primary">
+          <i class="fas fa-shopping-cart"></i> Carrito <span class="badge bg-primary" id="cart-count">0</span>
+        </a>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
+
 
   <script>
     // Agrega una clase de parpadeo al navbar-brand
