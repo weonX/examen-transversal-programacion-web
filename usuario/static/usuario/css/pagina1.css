@@ -269,3 +269,18 @@ h1 {
   text-align: center;
   
 }
+
+.a1 {
+  display: flex;          /* Activa Flexbox en el contenedor .a1 */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;    /* Centra verticalmente */
+}
+
+#currentDateTime {
+  text-align: center; /* Centra el texto horizontalmente */
+}
+
+.col {
+  margin-left: 180px;
+}
+
