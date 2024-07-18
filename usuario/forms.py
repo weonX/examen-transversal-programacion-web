@@ -9,7 +9,7 @@ class UsuarioForm(forms.ModelForm):
 class PrecioForm(forms.ModelForm):
     class Meta:
         model = Precio
-        fields = ['ID_Precio', 'Precio_Prod']  
+        fields = ['ID_Precio', 'Precio_Prod']
 
 class CategoríaForm(forms.ModelForm):
     class Meta:
